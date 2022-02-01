@@ -27,4 +27,5 @@ public interface DigitalPicture
 // public void load(Image image); // load the image into the picture
 // public boolean load(String fileName); // load the picture from a file
  public void show(); // show the picture 
+ efjpojg
 }
