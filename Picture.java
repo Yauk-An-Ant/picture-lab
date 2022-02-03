@@ -174,6 +174,18 @@ public class Picture extends SimplePicture
     }
 }
 
+  public void mirrorRightToLeft() {
+      Pixel[][] pixels = this.getPixels2D();
+    
+      for(int i = pixels.length/2; i < pixels.length; i++) {
+        for(int j = 0; j < pixels[i].length; j++) {
+          pixels[i][j].setRed(pixels[pixels.length/2-i][j].getRed());
+          pixels[i][j].setGreen(pixels[pixels.length/2-i][j].getGreen());
+          pixels[i][j].setBlue(pixels[pixels.length/2-i][j].getBlue());
+        }
+      }
+  }
+
   
 } // this } is the end of class Picture, put all new methods before this
  
