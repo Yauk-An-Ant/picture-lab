@@ -1,3 +1,5 @@
+package picture;
+
 import java.awt.Color;
 
 /**

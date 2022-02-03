@@ -1,3 +1,4 @@
+package picture;
 
 import java.awt.*;
 import java.awt.event.*;

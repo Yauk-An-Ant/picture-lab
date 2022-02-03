@@ -1,3 +1,5 @@
+package picture;
+
 import java.awt.*;
 import java.awt.font.*;
 import java.awt.geom.*;
@@ -96,7 +98,81 @@ public class Picture extends SimplePicture
        }
     }
   }  
+
+  public void keepOnlyBlue()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+
+    for (Pixel[] rowArray : pixels)
+     {
+       for (Pixel p: rowArray)
+       {
+              p.setRed(0);
+              p.setGreen(0);
+       }
+    }
+  } 
+
+  public void SwitchColors() {
+    Pixel[][] pixels = this.getPixels2D();
+
+    for(Pixel[] rowArray : pixels) {
+      for(Pixel p: rowArray) {
+        p.setRed(p.getGreen());
+        p.setGreen(p.getRed());
+        p.setBlue(p.getRed());
+      }
+    }
+  }
+
+  public void Negate() {
+    Pixel[][] pixels = this.getPixels2D();
+
+    for(Pixel[] rowArray : pixels) {
+      for(Pixel p: rowArray) {
+        p.setRed(255 - p.getRed());
+        p.setGreen(255 - p.getGreen());
+        p.setBlue(255 - p.getBlue());
+      }
+    }
+  }
+
+  public void Grayscale() {
+    Pixel[][] pixels = this.getPixels2D();
+
+    for(Pixel[] rowArray : pixels) {
+      for(Pixel p: rowArray) {
+        int avg = (int)((p.getRed() + p.getGreen() + p.getBlue())/3);
+        p.setRed(avg);
+        p.setGreen(avg);
+        p.setBlue(avg);
+      }
+    }
+  }
  
+  public void mirrorVertical() {
+      Pixel[][] pixels = this.getPixels2D();
+    
+      for(int i = 0; i < pixels.length/2; i++) {
+        for(int j = 0; j < pixels[i].length; j++) {
+          pixels[i][j].setRed(pixels[pixels.length-i][j].getRed());
+          pixels[i][j].setGreen(pixels[pixels.length-i][j].getGreen());
+          pixels[i][j].setBlue(pixels[pixels.length-i][j].getBlue());
+        }
+      }
+  }
+
+  public void mirrorHorizontal() {
+    Pixel[][] pixels = this.getPixels2D();
+  
+    for(int i = 0; i < pixels.length; i++) {
+      for(int j = 0; j < pixels[i].length/2; j++) {
+        pixels[i][j].setRed(pixels[i][pixels[i].length-j].getRed());
+        pixels[i][j].setGreen(pixels[i][pixels[i].length-j].getGreen());
+        pixels[i][j].setBlue(pixels[i][pixels[i].length-j].getBlue());
+      }
+    }
+}
 
   
 } // this } is the end of class Picture, put all new methods before this
